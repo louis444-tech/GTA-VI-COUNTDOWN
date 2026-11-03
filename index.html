@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b20">
+<title>GTA VI | Countdown</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;600;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #100b20;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(180deg,
+        rgba(16,11,32,.15),
+        rgba(16,11,32,.85)),
+        radial-gradient(ellipse at 20% 20%,
+        #ed399b 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 35%,
+        #1769bd 0%, transparent 50%),
+        linear-gradient(135deg,#17102d,#090b20);
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    background-image:
+    linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom,black,transparent);
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #ff76c7;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(75px, 15vw, 160px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -8px;
+    background: linear-gradient(
+        135deg,
+        #ffb2dc,
+        #ff42a4,
+        #8b9cff,
+        #65dfff
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 30px #ed399b66);
+}
+
+.subtitle {
+    font-size: 12px;
+    letter-spacing: 8px;
+    margin-top: 18px;
+    color: #ffffffbd;
+    text-transform: uppercase;
+}
+
+.description {
+    margin-top: 55px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #e5d9f4;
+    text-transform: uppercase;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 30px);
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    width: clamp(72px, 16vw, 125px);
+    padding: 22px 8px;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(255,50,160,.08);
+}
+
+.number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(30px, 6vw, 52px);
+    font-weight: 700;
+    color: white;
+    font-variant-numeric: tabular-nums;
+}
+
+.label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #ff91d1;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.release {
+    margin-top: 45px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+.platforms {
+    margin-top: 17px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa4bd;
+}
+
+.footer {
+    position: absolute;
+    bottom: 25px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #ffffff65;
+    text-transform: uppercase;
+}
+
+@media(max-width:480px) {
+    .description {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        letter-spacing: 5px;
+    }
+
+    .time-box {
+        padding: 18px 5px;
+    }
+
+    .footer {
+        font-size: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<main class="container">
+
+    <div class="tag">The countdown has begun</div>
+
+    <h1>VI</h1>
+
+    <div class="subtitle">Grand Theft Auto</div>
+
+    <div class="description">
+        Vice City is waiting for you.
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <div class="number" id="days">000</div>
+            <div class="label">Dias</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="hours">00</div>
+            <div class="label">Horas</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="minutes">00</div>
+            <div class="label">Minutos</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="seconds">00</div>
+            <div class="label">Segundos</div>
+        </div>
+
+    </div>
+
+    <div class="release">
+        19 · 11 · 2026
+    </div>
+
+    <div class="platforms">
+        PLAYSTATION 5 · XBOX SERIES X|S
+    </div>
+
+</main>
+
+<footer class="footer">
+    A new era begins · 2026
+</footer>
+
+<script>
+
+// Data de lançamento: 19 de novembro de 2026
+// Meia-noite no horário local do navegador.
+
+const launchDate = new Date(2026, 10, 19, 0, 0, 0);
+
+function updateCountdown() {
+
+    const now = new Date();
+    const difference = launchDate - now;
+
+    if (difference <= 0) {
+        document.querySelector(".description").textContent =
+            "WELCOME TO VICE CITY";
+
+        document.querySelector(".countdown").innerHTML =
+            "<h2 style='font-family:Orbitron;color:#ff76c7;font-size:25px'>IT'S TIME.</h2>";
+
+        return;
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(3, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>

@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#100b20">
+
 <title>GTA VI | Countdown</title>
 
 <style>
@@ -45,21 +46,50 @@ body {
     inset: 0;
     opacity: .12;
     background-image:
-    linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.15) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px, transparent 1px);
     background-size: 50px 50px;
     mask-image: linear-gradient(to bottom,black,transparent);
 }
+
+/* CONTEÚDO PRINCIPAL */
 
 .container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 35px 20px;
+    padding: 45px 20px 80px;
 }
+
+/* CAPA GTA VI */
+
+.cover-wrapper {
+    width: min(100%, 850px);
+    margin-bottom: 38px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.2);
+
+    box-shadow:
+        0 0 25px rgba(237,57,155,.25),
+        0 0 55px rgba(23,105,189,.15);
+
+    animation: fadeIn 1.2s ease;
+}
+
+.cover-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* TÍTULOS */
 
 .tag {
     font-family: 'Orbitron', sans-serif;
@@ -76,6 +106,7 @@ h1 {
     font-weight: 900;
     line-height: 1;
     letter-spacing: -8px;
+
     background: linear-gradient(
         135deg,
         #ffb2dc,
@@ -83,9 +114,11 @@ h1 {
         #8b9cff,
         #65dfff
     );
+
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+
     filter: drop-shadow(0 0 30px #ed399b66);
 }
 
@@ -105,6 +138,8 @@ h1 {
     text-transform: uppercase;
 }
 
+/* COUNTDOWN */
+
 .countdown {
     display: flex;
     justify-content: center;
@@ -116,11 +151,15 @@ h1 {
 .time-box {
     width: clamp(72px, 16vw, 125px);
     padding: 22px 8px;
+
     background: rgba(255,255,255,.055);
     border: 1px solid rgba(255,255,255,.16);
     border-radius: 12px;
+
     backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(255,50,160,.08);
+
+    box-shadow:
+        0 0 25px rgba(255,50,160,.08);
 }
 
 .number {
@@ -139,6 +178,8 @@ h1 {
     text-transform: uppercase;
 }
 
+/* LANÇAMENTO */
+
 .release {
     margin-top: 45px;
     font-family: 'Orbitron', sans-serif;
@@ -154,19 +195,48 @@ h1 {
     color: #aaa4bd;
 }
 
+/* RODAPÉ */
+
 .footer {
-    position: absolute;
-    bottom: 25px;
+    padding: 0 15px 25px;
+    text-align: center;
     font-size: 9px;
     letter-spacing: 2px;
     color: #ffffff65;
     text-transform: uppercase;
 }
 
+/* ANIMAÇÃO */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
 @media(max-width:480px) {
+
+    .container {
+        padding: 25px 15px 55px;
+    }
+
+    .cover-wrapper {
+        margin-bottom: 30px;
+        border-radius: 12px;
+    }
+
     .description {
         font-size: 10px;
         letter-spacing: 2px;
+        margin-top: 40px;
     }
 
     .subtitle {
@@ -190,15 +260,32 @@ h1 {
 
 <main class="container">
 
-    <div class="tag">The countdown has begun</div>
+    <!-- CAPA OFICIAL GTA VI -->
+
+    <div class="cover-wrapper">
+        <img
+            src="IMG_4931.jpeg"
+            alt="Grand Theft Auto VI - Jason e Lucia"
+        >
+    </div>
+
+    <!-- IDENTIDADE VISUAL -->
+
+    <div class="tag">
+        The countdown has begun
+    </div>
 
     <h1>VI</h1>
 
-    <div class="subtitle">Grand Theft Auto</div>
+    <div class="subtitle">
+        Grand Theft Auto
+    </div>
 
     <div class="description">
         Vice City is waiting for you.
     </div>
+
+    <!-- CONTAGEM REGRESSIVA -->
 
     <div class="countdown">
 
@@ -223,6 +310,8 @@ h1 {
         </div>
 
     </div>
+
+    <!-- DATA DE LANÇAMENTO -->
 
     <div class="release">
         19 · 11 · 2026
@@ -251,6 +340,7 @@ function updateCountdown() {
     const difference = launchDate - now;
 
     if (difference <= 0) {
+
         document.querySelector(".description").textContent =
             "WELCOME TO VICE CITY";
 
@@ -290,6 +380,7 @@ function updateCountdown() {
 }
 
 updateCountdown();
+
 setInterval(updateCountdown, 1000);
 
 </script>
